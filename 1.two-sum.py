@@ -13,15 +13,24 @@ class Solution:
         #         if (nums[i] + nums[j]) == target:
         #             return [i, j];
 
-        # Solution 2
-        map = {};
-        for i in range(0, len(nums)):
-            map[nums[i]] = i;
+        # # Solution 2
+        # map = {};
+        # for i in range(0, len(nums)):
+        #     map[nums[i]] = i;
         
+        # for i in range(0, len(nums)):
+        #     key = target - nums[i];
+        #     if (key in map) and (map[key] != i):
+        #         return [i, map[key]];
+
+        # Solution 3
+        map = {};
         for i in range(0, len(nums)):
             key = target - nums[i];
             if (key in map) and (map[key] != i):
-                return [i, map[key]];
+                return [map[key], i];
+            else:
+                map[nums[i]] = i;
         
 # @lc code=end
 
